@@ -1,14 +1,23 @@
 package com.theatrix.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Kino on 2017-11-05.
  */
-public class Theatre
+@Entity
+public class Theatre implements Serializable
 {
     public Theatre(Long id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String address;
@@ -69,4 +78,57 @@ public class Theatre
     public Long getShowId() {
         return showId;
     }
+
+    private Theatre(Builder builder)
+    {
+        this.id = builder.IDno;
+        this.name = builder.name;
+        this.address = builder.address;
+        this.maxAdience = builder.maxAdience;
+        this.minAdience = builder.minAdience;
+        this.showId = builder.showId;
+
+    }
+
+
+    public static class Builder {
+
+        Long IDno, showId;
+        private String name, address, maxAdience, minAdience;
+
+
+        public Builder nameVal(String n) {
+            this.name = n;
+            return this;
+        }
+
+        public Builder addressVal(String val) {
+            this.address = val;
+            return this;
+        }
+
+
+        public Builder maxAdienceVal(String val) {
+            this.maxAdience = val;
+            return this;
+        }
+
+        public Builder minAdienceVal(String val) {
+            this.minAdience = val;
+            return this;
+        }
+
+        public Builder showIdVal(Long val) {
+            this.showId = val;
+            return this;
+        }
+
+        public Theatre build() {
+            return new Theatre(this);
+        }
+
+
+    }
+
+
 }

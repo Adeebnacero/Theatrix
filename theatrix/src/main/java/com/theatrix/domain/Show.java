@@ -1,15 +1,24 @@
 package com.theatrix.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Kino on 2017-11-05.
  */
-public class Show
+@Entity
+public class Show implements Serializable
 {
 
     public Show(Long id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String showName;
     private String startTime;
@@ -64,4 +73,43 @@ public class Show
     }
 
 
+    private Show(Builder builder)
+    {
+        this.id = builder.IDno;
+        this.showName = builder.showName;
+        this.startTime = builder.startTime;
+        this.endTime = builder.endTime;
+        this.MovieId = builder.MovieId;
+
+    }
+
+
+    public static class Builder {
+
+        private Long IDno, MovieId;
+        private String showName, startTime, endTime;
+
+
+        public Builder showNameVal(String val) {
+            this.showName = val;
+            return this;
+        }
+
+        public Builder startTimeVal(String val) {
+            this.startTime = val;
+            return this;
+        }
+
+
+        public Builder endTimeVal(String val) {
+            this.endTime = val;
+            return this;
+        }
+
+        public Show build() {
+            return new Show(this);
+        }
+
+
+    }
 }

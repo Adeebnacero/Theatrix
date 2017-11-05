@@ -5,11 +5,6 @@ package com.theatrix.domain;
  */
 public class AdminUser
 {
-
-    public AdminUser(Long id) {
-        this.id = id;
-    }
-
     private Long id;
     private String name;
     private String surname;
@@ -36,6 +31,9 @@ public class AdminUser
     //***************************************Getters*******************************************
 
 
+    public AdminUser() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -52,5 +50,54 @@ public class AdminUser
         return password;
     }
 
+    public AdminUser(Builder build){
+        this.id = build.id;
+        this.name = build.name;
+        this.surname = build.surname;
+        this.password = build.password;
+    }
 
+    public static class Builder{
+        private Long id;
+        private String name;
+        private String surname;
+        private String password;
+
+        public Builder userID(long value){
+            this.id = value;
+            return this;
+        }
+        public Builder name(String value){
+            this.name = value;
+            return this;
+        }
+        public Builder surname(String value){
+            this.surname = value;
+            return this;
+        }
+        public Builder password(String value){
+            this.password = value;
+            return this;
+        }
+
+
+        public AdminUser build(){
+            return new AdminUser(this);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AdminUser)) return false;
+
+        AdminUser adminUser = (AdminUser) o;
+
+        return getId().equals(adminUser.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
 }

@@ -9,6 +9,9 @@ public class Seat {
         this.id = id;
     }
 
+    public Seat() {
+    }
+
     private Long id;
     private String seatNumber;
     private String seatStatus;
@@ -43,5 +46,47 @@ public class Seat {
         return seatStatus;
     }
 
+    public Seat(Builder build){
+        this.id = build.id;
+        this.seatNumber = build.seatNumber;
+        this.seatStatus = build.seatStatus;
+    }
 
+    public static class Builder{
+
+        private Long id;
+        private String seatNumber;
+        private String seatStatus;
+
+        public Builder id(long value){
+            this.id =value;
+            return this;
+        }
+        public Builder seatNumber(String value){
+            this.seatNumber =value;
+            return this;
+        }
+        public Builder seatStatus(String value){
+            this.seatStatus =value;
+            return this;
+        }
+        public Seat build(){
+            return new Seat(this);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Seat)) return false;
+
+        Seat seat = (Seat) o;
+
+        return getId().equals(seat.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
 }

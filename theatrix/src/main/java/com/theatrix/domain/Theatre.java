@@ -9,6 +9,9 @@ public class Theatre
         this.id = id;
     }
 
+    public Theatre() {
+    }
+
     private Long id;
     private String name;
     private String address;
@@ -45,7 +48,6 @@ public class Theatre
 
     //***************************************Getters*******************************************
 
-
     public Long getId() {
         return id;
     }
@@ -68,5 +70,69 @@ public class Theatre
 
     public Long getShowId() {
         return showId;
+    }
+
+    public Theatre(Builder build){
+
+        this.id = build.id;
+        this.name = build.name;
+        this.address = build.address;
+        this.maxAdience = build.maxAdience;
+        this.minAdience = build.minAdience;
+        this.showId = build.showId;
+    }
+
+
+    public static class Builder{
+
+        private Long id;
+        private String name;
+        private String address;
+        private String maxAdience;
+        private String minAdience;
+        private Long showId;
+
+        public Builder id(long value){
+            this.id = value;
+            return this;
+        }
+        public Builder name(String value){
+            this.name = value;
+            return this;
+        }
+        public Builder address(String value){
+            this.address = value;
+            return this;
+        }
+        public Builder maxAdience(String value){
+            this.maxAdience = value;
+            return this;
+        }
+        public Builder minAdience(String value){
+            this.minAdience = value;
+            return this;
+        }
+        public Builder showId(Long value){
+            this.showId = value;
+            return this;
+        }
+        public Theatre build(){
+            return new Theatre(this);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Theatre)) return false;
+
+        Theatre theatre = (Theatre) o;
+
+        return getId().equals(theatre.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 }

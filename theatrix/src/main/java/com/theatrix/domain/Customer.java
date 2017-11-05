@@ -1,15 +1,24 @@
 package com.theatrix.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Kino on 2017-11-05.
  */
-public class Customer
+@Entity
+public class Customer implements Serializable
 {
 
     public Customer(Long id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;
@@ -78,6 +87,63 @@ public class Customer
 
     public String getPassword() {
         return password;
+    }
+
+
+
+    private Customer(Builder builder)
+    {
+        this.id = builder.IDno;
+        this.name = builder.name;
+        this.surname = builder.surname;
+        this.cellphone = builder.cellphone;
+        this.email = builder.email;
+        this.age = builder.age;
+        this.password = builder.password;
+
+    }
+
+
+    public static class Builder {
+
+        Long IDno;
+        private String name, surname, cellphone, email, age, password;
+
+
+        public Builder nameVal(String n) {
+            this.name = n;
+            return this;
+        }
+
+
+        public Builder surnameVal(String sn) {
+            this.surname = sn;
+            return this;
+        }
+
+        public Builder phoneNumVal(String phone) {
+            this.cellphone = phone;
+            return this;
+        }
+
+        public Builder emailVal(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder ageVal(String age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder passwordVal(String pass) {
+            this.password = pass;
+            return this;
+        }
+
+        public Customer build() {
+            return new Customer(this);
+        }
     }
 
 

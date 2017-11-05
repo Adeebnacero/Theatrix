@@ -1,15 +1,24 @@
 package com.theatrix.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Kino on 2017-11-05.
  */
-public class Booking
+@Entity
+public class Booking implements Serializable
 {
 
     public Booking(Long id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long customerId;
     private Long movieId;
@@ -91,4 +100,67 @@ public class Booking
     }
 
 
-}
+
+    private Booking(Builder builder)
+    {
+        this.id = builder.IDno;
+        this.customerId = builder.custId;
+        this.movieId = builder.movieId;
+        this.theatreId = builder.theatreId;
+        this.showId = builder.showId;
+        this.seatId = builder.seatId;
+        this.date = builder.date;
+        this.numCustomers = builder.numCustomers;
+
+    }
+
+
+    public static class Builder {
+
+        private Long IDno, custId, movieId, theatreId, showId, seatId;
+        private String date, numCustomers;
+
+
+        public Builder custIdVal(Long id) {
+            this.custId = id;
+            return this;
+        }
+
+        public Builder movieIdVal(Long id) {
+            this.movieId = id;
+            return this;
+        }
+
+        public Builder theatreIdVal(Long id) {
+            this.theatreId = id;
+            return this;
+        }
+
+        public Builder showIdVal(Long id) {
+            this.showId = id;
+            return this;
+        }
+
+        public Builder seatIdVal(Long id) {
+            this.seatId = id;
+            return this;
+        }
+
+        public Builder dateVal(String date) {
+            this.date = date;
+            return this;
+        }
+
+        public Builder numCustVal(String num) {
+            this.numCustomers = num;
+            return this;
+        }
+
+        public Booking build() {
+            return new Booking(this);
+        }
+    }
+
+
+
+    }

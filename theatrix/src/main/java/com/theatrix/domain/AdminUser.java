@@ -1,15 +1,24 @@
 package com.theatrix.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
+
 /**
  * Created by Kino on 2017-11-05.
  */
-public class AdminUser
+@Entity
+public class AdminUser implements Serializable
 {
 
     public AdminUser(Long id) {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;
@@ -52,5 +61,43 @@ public class AdminUser
         return password;
     }
 
+    private AdminUser(Builder builder)
+    {
+        this.id = builder.IDno;
+        this.name = builder.name;
+        this.surname = builder.surname;
+        this.password = builder.password;
 
-}
+    }
+
+
+           public static class Builder {
+
+                Long IDno;
+                private String name, surname, password;
+
+
+                public Builder nameVal(String n) {
+                    this.name = n;
+                    return this;
+                }
+
+                public Builder surnameVal(String sn) {
+                    this.surname = sn;
+                    return this;
+                }
+
+                public Builder passwordVal(String p) {
+                    this.password = p;
+                    return this;
+                }
+
+
+               public AdminUser build() {
+                   return new AdminUser(this);
+               }
+
+           }
+
+
+    }

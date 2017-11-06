@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
     <script>
         function isNumber(e){
             e = e || window.event;
@@ -19,6 +18,10 @@
 </head>
 <body>
 <form id="booking-form" class="booking-form" name="form1" method="post" action="www.google.co.za">
+    <div class="group submit"align = "right">
+        <label class="empty" ></label>
+        <div><input name="submit" type="submit" value="Back"/></div>
+    </div>
     <div align="center"><img class="logo" src="images/movie.png" title="Theatrix" alt="Theatrix" width="10%" height="10%"></div>
     <div class="h1">Movie Reservation Form</div>
     <div id="form-content">
@@ -26,31 +29,31 @@
             <label align="center" >Select Movie</label>
             <div class="w3-content w3-display-container" align="center">
                 <div class="w3-display-container mySlides">
-                    <img src="007.png" style="width:30%">
+                    <img  src = "http://localhost:56393/Theatrix/theatrix/src/main/java/com/theatrix/images/007.png" style="width:45%">
                     <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                         007, James Bond
                     </div>
                 </div>
                 <div class="w3-display-container mySlides">
-                    <img src="images/superman.jpg" style="width:30%">
+                    <img src="http://localhost:56393/Theatrix/theatrix/src/main/java/com/theatrix/images/superman.jpg" style="width:45%">
                     <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                         Superman
                     </div>
                 </div>
                 <div class="w3-display-container mySlides">
-                    <img src="images/guardians.png" style="width:30%">
+                    <img src="http://localhost:56393/Theatrix/theatrix/src/main/java/com/theatrix/images/guardians.png" style="width:45%">
                     <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                         Guardians of the Galaxy
                     </div>
                 </div>
                 <div class="w3-display-container mySlides">
-                    <img src="images/StarWarsTheLastJedi.jpg" style="width:30%">
-                    <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                    <img src="http://localhost:56393/Theatrix/theatrix/src/main/java/com/theatrix/images/StarWarsTheLastJedi.jpg" style="width:45%">
+                    <div class="w3-display-bottomleft w3-med w3-container w3-padding-16 w3-black">
                         Star Wars The Last Jedi
                     </div>
                 </div>
-                <button class="w3-button w3-black w3-display-left" onclick ="plusDivs(-1)">&#10094;</button>
-                <button class="w3-button w3-black w3-display-right" onclick ="plusDivs(1)">&#10095;</button>
+                <button class="w3-button w3-white w3-display-left" onclick ="plusDivs(-1)">&#10094;</button>
+                <button class="w3-button w3-white w3-display-right" onclick ="plusDivs(1)">&#10095;</button>
                 <span class="w3-badge demo w3-border" onclick="currentDiv(1)"></span>
                 <span class="w3-badge demo w3-border" onclick="currentDiv(2)"></span>
                 <span class="w3-badge demo w3-border" onclick="currentDiv(3)"></span>
@@ -69,8 +72,8 @@
             <div><input id="surname" name="surname" maxlength="20" class="form-control" type="text" placeholder="Surname" required autofocus></div>
         </div>
         <div class="group">
-            <label for="Date of Birth">Date of Birth</label>
-            <div><input id="dob" name="dob" maxlength="8" class="form-control" type="dob" onkeypress="return isNumber(event);" placeholder="DD MM YYYY" required autofocus></div>
+            <label for="dob">Date of Birth</label>
+            <div><input id="dob" name="dob" maxlength="8" class="form-control" type="dob" onkeypress="return isNumber(event);" placeholder="DDMMYYYY" required autofocus></div>
         </div>
         <div class="group">
             <label for="phone" >Contact Number</label>
@@ -90,7 +93,7 @@
         </div>
         <div class="group submit">
             <label class="empty"></label>
-            <div><input name="submit" type="submit" value="Submit" /></div>
+            <div><input name="submit" type="submit" value="Book" /></div>
         </div>
     </div>
     <div id="form-loading" class="hide"><i class="fa fa-circle-o-notch fa-spin"></i></div>

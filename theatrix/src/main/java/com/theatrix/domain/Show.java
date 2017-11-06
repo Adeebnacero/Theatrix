@@ -90,6 +90,10 @@ public class Show implements Serializable
         private String showName, startTime, endTime;
 
 
+        public Builder id(Long val) {
+            this.IDno = val;
+            return this;
+        }
         public Builder showNameVal(String val) {
             this.showName = val;
             return this;
@@ -106,6 +110,10 @@ public class Show implements Serializable
             return this;
         }
 
+        public Builder movieVal(Long val) {
+            this.MovieId = val;
+            return this;
+        }
         public Show build() {
             return new Show(this);
         }

@@ -100,6 +100,11 @@ public class Movie implements Serializable
         private String name, category, duration, yearRelease, ageRestriction;
 
 
+        public Builder idVal(Long value) {
+            this.IDno = value;
+            return this;
+        }
+
         public Builder nameVal(String n) {
             this.name = n;
             return this;

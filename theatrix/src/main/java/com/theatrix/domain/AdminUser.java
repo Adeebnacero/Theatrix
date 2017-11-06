@@ -76,6 +76,10 @@ public class AdminUser implements Serializable
                 Long IDno;
                 private String name, surname, password;
 
+               public Builder id(Long n) {
+                   this.IDno = n;
+                   return this;
+               }
 
                 public Builder nameVal(String n) {
                     this.name = n;

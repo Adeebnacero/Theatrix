@@ -110,6 +110,10 @@ public class Customer implements Serializable
         private String name, surname, cellphone, email, age, password;
 
 
+        public Builder id(Long n) {
+            this.IDno = n;
+            return this;
+        }
         public Builder nameVal(String n) {
             this.name = n;
             return this;

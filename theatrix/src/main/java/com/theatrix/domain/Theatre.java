@@ -96,6 +96,10 @@ public class Theatre implements Serializable
         Long IDno, showId;
         private String name, address, maxAdience, minAdience;
 
+        public Builder id(Long n) {
+            this.IDno = n;
+            return this;
+        }
 
         public Builder nameVal(String n) {
             this.name = n;

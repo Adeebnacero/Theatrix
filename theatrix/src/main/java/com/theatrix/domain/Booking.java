@@ -121,6 +121,10 @@ public class Booking implements Serializable
         private String date, numCustomers;
 
 
+        public Builder id(Long id) {
+            this.IDno = id;
+            return this;
+        }
         public Builder custIdVal(Long id) {
             this.custId = id;
             return this;

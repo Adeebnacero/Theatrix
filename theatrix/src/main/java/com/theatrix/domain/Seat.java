@@ -68,6 +68,10 @@ public class Seat implements Serializable
         Long IDno;
         private String seatNumber, seatStatus;
 
+        public Builder id(Long val) {
+            this.IDno = val;
+            return this;
+        }
 
         public Builder seatNumVal(String val) {
             this.seatNumber = val;

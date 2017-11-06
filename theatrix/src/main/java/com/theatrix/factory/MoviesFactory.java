@@ -8,7 +8,7 @@ import com.theatrix.utility.KeyGenerator;
  */
 public class MoviesFactory {
 
-    public static Movie buildMovies(String name, String category, String duration, String yearRelease, String ageRestriction){
+    public static Movie buildMovie(String name, String category, String duration, String yearRelease, String ageRestriction){
 
        Movie movies = new Movie.Builder()
                .idVal(KeyGenerator.getEntityId())

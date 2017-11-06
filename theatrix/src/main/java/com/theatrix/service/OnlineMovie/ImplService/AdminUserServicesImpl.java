@@ -13,19 +13,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminUserServicesImpl implements AdminUserServices {
 
-    @Autowired
+    @Autowired(required = true)
     private AdminUserRepository adminUserRepository;
-
     @Override
     public AdminUser save(AdminUser id) {
         return adminUserRepository.save(id);
     }
-
     @Override
     public AdminUser findById(Long aLong) {
         return adminUserRepository.findOne(aLong);
     }
-
     @Override
     public AdminUser update(AdminUser id) {
         return adminUserRepository.save(id);

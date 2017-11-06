@@ -103,5 +103,18 @@ public class AdminUser implements Serializable
 
            }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AdminUser)) return false;
 
+        AdminUser adminUser = (AdminUser) o;
+
+        return getId().equals(adminUser.getId());
     }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+}

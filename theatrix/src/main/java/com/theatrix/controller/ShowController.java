@@ -1,5 +1,6 @@
 package com.theatrix.controller;
 
+import com.google.gson.Gson;
 import com.theatrix.domain.Show;
 import com.theatrix.service.OnlineMovie.ImplService.ShowServicesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ShowController
     private ShowServicesImpl showService;
 
 
-    @GetMapping(path="/add")
+    @GetMapping(path="/add/{showDate}/{startTime}/{endTime}/{MovieId}")
     public @ResponseBody
     String addNewShow(@RequestParam String showDate, @RequestParam String startTime, @RequestParam String endTime,
                          @RequestParam Long MovieId) {
@@ -33,18 +34,19 @@ public class ShowController
                 .build();
 
         showService.save(show);
-        return "Saved";
+        return new Gson().toJson(show);
     }
 
 
-    @GetMapping(path="/readOne")
+    @GetMapping(path="/readOne/{id}")
     public @ResponseBody
-    Show readOneShow (@RequestParam Long id) {
+    String readOneShow (@RequestParam Long id) {
 
-        return showService.findById(id);
+        Show show =showService.findById(id);
+        return new Gson().toJson(show);
     }
 
-    @GetMapping(path="/update")
+    @GetMapping(path="/update/{id}/{showDate}/{startTime}/{endTime}/{MovieId}")
     public @ResponseBody
     String updateShow(@RequestParam Long id, @RequestParam String showDate, @RequestParam String startTime,
                       @RequestParam String endTime, @RequestParam Long MovieId) {
@@ -58,16 +60,16 @@ public class ShowController
                 .build();
 
         showService.save(show);
-        return "updated";
+        return new Gson().toJson(show);
     }
 
-    @GetMapping(path="/delete")
+    @GetMapping(path="/delete/{id}")
     public @ResponseBody String deleteShow (@RequestParam Long id) {
 
         Show show = showService.findById(id);
         showService.delete(show);
 
-        return "deleted";
+        return new Gson().toJson(show);
     }
 
 }

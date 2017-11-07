@@ -8,14 +8,13 @@ import com.theatrix.utility.KeyGenerator;
  */
 public class SeatFactory {
 
-    public static Seat buildSeat(String seatNumber, String seatStatus){
+    public static Seat buildSeat(String seat_class_category, int class_no_seat){
 
         Seat seat = new Seat.Builder()
-                .id(KeyGenerator.getEntityId())
-                .seatNumVal(seatNumber)
-                .seatStatusVal(seatStatus)
+                .seat_Class_ID(KeyGenerator.getEntityId())
+                .seat_class_category(seat_class_category)
+                .seat_quantity(class_no_seat)
                 .build();
-
         return seat;
     }
 }

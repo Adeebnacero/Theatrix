@@ -25,7 +25,7 @@ public class Booking implements Serializable
     private Long show_ID;
     private Long seat_ID;
     private String date;
-    private String numCustomers;
+    private int noSeats;
 
     @Column(name ="customer_ID", nullable = false)
     @OneToMany(cascade = CascadeType.ALL)
@@ -74,8 +74,8 @@ public class Booking implements Serializable
         this.date = date;
     }
 
-    public void setNumCustomers(String numCustomers) {
-        this.numCustomers = numCustomers;
+    public void setNumCustomers(int noSeats) {
+        this.noSeats = noSeats;
     }
 
     //***************************************Getters*******************************************
@@ -109,8 +109,8 @@ public class Booking implements Serializable
         return date;
     }
 
-    public String getNumCustomers() {
-        return numCustomers;
+    public int getNumCustomers() {
+        return noSeats;
     }
 
 
@@ -124,7 +124,7 @@ public class Booking implements Serializable
         this.show_ID = builder.showId;
         this.seat_ID = builder.seatId;
         this.date = builder.date;
-        this.numCustomers = builder.numCustomers;
+        this.noSeats = builder.noSeats;
 
     }
 
@@ -132,7 +132,7 @@ public class Booking implements Serializable
     public static class Builder {
 
         private Long IDno, custId, movieId, theatreId, showId, seatId;
-        private String date, numCustomers;
+        private String date; int noSeats;
 
 
         public Builder id(Long id) {
@@ -169,8 +169,8 @@ public class Booking implements Serializable
             return this;
         }
 
-        public Builder numCustVal(String num) {
-            this.numCustomers = num;
+        public Builder numCustVal(int num) {
+            this.noSeats = num;
             return this;
         }
 

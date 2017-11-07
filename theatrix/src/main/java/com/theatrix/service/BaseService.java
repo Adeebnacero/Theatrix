@@ -9,4 +9,5 @@ public interface BaseService<E,ID> {
     E findById(ID id);
     E update(E id);
     void delete(E id);
+    void bookMovie(E id);
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(path="/Theatre")
+
 public class TheatreController
 {
     @Autowired

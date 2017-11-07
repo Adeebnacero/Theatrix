@@ -35,4 +35,9 @@ public class MovieServicesImpl implements MovieServices {
     public void delete(Movie id) {
         movieRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Movie id) {
+
+    }
 }

@@ -34,4 +34,9 @@ public class ShowServicesImpl implements ShowServices {
     public void delete(Show id) {
         showRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Show id) {
+
+    }
 }

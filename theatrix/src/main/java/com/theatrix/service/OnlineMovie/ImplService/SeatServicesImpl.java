@@ -34,4 +34,9 @@ public class SeatServicesImpl implements SeatServices {
     public void delete(Seat id) {
         seatRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Seat id) {
+
+    }
 }

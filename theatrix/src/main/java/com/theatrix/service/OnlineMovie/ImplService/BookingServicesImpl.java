@@ -34,4 +34,10 @@ public class BookingServicesImpl implements BookingServices {
     public void delete(Booking id) {
         bookingRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Booking id) {
+
+        bookingRepository.save(id);
+    }
 }

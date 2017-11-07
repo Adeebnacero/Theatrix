@@ -22,11 +22,11 @@ public class ShowController
 
     @GetMapping(path="/add")
     public @ResponseBody
-    String addNewShow(@RequestParam String showName, @RequestParam String startTime, @RequestParam String endTime,
+    String addNewShow(@RequestParam String showDate, @RequestParam String startTime, @RequestParam String endTime,
                          @RequestParam Long MovieId) {
 
         Show show = new Show.Builder()
-                .showNameVal(showName)
+                .showDate(showDate)
                 .startTimeVal(startTime)
                 .endTimeVal(endTime)
                 .movieVal(MovieId)
@@ -46,12 +46,12 @@ public class ShowController
 
     @GetMapping(path="/update")
     public @ResponseBody
-    String updateShow(@RequestParam Long id, @RequestParam String showName, @RequestParam String startTime,
+    String updateShow(@RequestParam Long id, @RequestParam String showDate, @RequestParam String startTime,
                       @RequestParam String endTime, @RequestParam Long MovieId) {
 
         Show show = new Show.Builder()
                 .id(id)
-                .showNameVal(showName)
+                .showDate(showDate)
                 .startTimeVal(startTime)
                 .endTimeVal(endTime)
                 .movieVal(MovieId)

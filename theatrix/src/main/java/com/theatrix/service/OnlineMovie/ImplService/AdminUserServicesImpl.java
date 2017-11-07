@@ -32,4 +32,9 @@ public class AdminUserServicesImpl implements AdminUserServices {
     public void delete(AdminUser id) {
         adminUserRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(AdminUser id) {
+
+    }
 }

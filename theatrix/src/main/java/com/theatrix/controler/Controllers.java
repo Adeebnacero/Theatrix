@@ -2,18 +2,9 @@ package com.theatrix.controler;
 
 
 import com.google.gson.Gson;
-import com.theatrix.domain.AdminUser;
-import com.theatrix.domain.Customer;
-import com.theatrix.domain.Movie;
-import com.theatrix.domain.Seat;
-import com.theatrix.factory.AdminUserFactory;
-import com.theatrix.factory.CustomerFactory;
-import com.theatrix.factory.MoviesFactory;
-import com.theatrix.factory.SeatFactory;
-import com.theatrix.repository.AdminUserRepository;
-import com.theatrix.repository.CustomerRepository;
-import com.theatrix.repository.MovieRepository;
-import com.theatrix.repository.SeatRepository;
+import com.theatrix.domain.*;
+import com.theatrix.factory.*;
+import com.theatrix.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +25,8 @@ public class Controllers {
     private CustomerRepository customerRepository;
     private MovieRepository movieRepository;
     private SeatRepository seatRepository;
+    private BookingRepository bookRepository;
+
     //inserts new admin user
     @GetMapping(path ="/addAdmin/{firstname}/{lastname}/{password}")
     public @ResponseBody String addAdminUser(@RequestParam String firstname, @RequestParam String lastname,
@@ -237,9 +230,9 @@ public class Controllers {
     }
     //inserts seats
     @GetMapping(path ="/addSeatsMovie/{seatNumber}/{category}")
-    public @ResponseBody String addSeatsMovie(@RequestParam String seatNumber, @RequestParam String seatStatus)
+    public @ResponseBody String addSeatsMovie(@RequestParam String seatCategory, @RequestParam int seat_qauntity)
     {
-        Seat seat = SeatFactory.buildSeat(seatNumber,seatStatus);
+        Seat seat = SeatFactory.buildSeat(seatCategory,seat_qauntity);
         seatRepository.save(seat);
         System.out.println("seat Record Added Successfully\n");
         return new Gson().toJson(seat);
@@ -276,14 +269,14 @@ public class Controllers {
     //update movie details
     @GetMapping(path ="/updateSeat/{seatIdentity}")
     public @ResponseBody String updateSeat(@RequestParam Long seatId,@RequestParam String seatNumber,
-                                           @RequestParam String seatStatus)
+                                           @RequestParam int seat_quntity)
     {
         Seat seat = seatRepository.findOne(seatId);
         if(seat !=null){
 
             Seat seatUpdate = new Seat.Builder()
-                    .seatNumVal(seatNumber)
-                    .seatStatusVal(seatStatus)
+                    .seat_class_category(seatNumber)
+                    .seat_quantity(seat_quntity)
                     .build();
 
             seatRepository.save(seatUpdate);
@@ -293,5 +286,18 @@ public class Controllers {
             System.out.println("failed to update record(s)\n");
         }
         return new Gson().toJson(seat);
+    }
+
+    //inserts seats
+    @GetMapping(path ="/bookmovie/{customer_ID}/{movie_ID}/{theatre_ID}/{show_ID}/{seat_ID}/{noSesats}{date}")
+    public @ResponseBody String bookmovie(@RequestParam Long customer_ID, @RequestParam Long movie_ID,@RequestParam Long theatre_ID,
+                                          @RequestParam Long show_ID,@RequestParam Long seat_ID,@RequestParam int noSesats,
+                                          @RequestParam String date)
+    {
+
+        Booking booking = BookingsFactory.buildBookings(customer_ID,movie_ID,theatre_ID,show_ID,seat_ID,date,noSesats);
+        bookRepository.save(booking);
+        System.out.println("movie Record booked Successfully\n");
+        return new Gson().toJson(booking);
     }
 }

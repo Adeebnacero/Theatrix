@@ -34,4 +34,9 @@ public class CustomerServicesImpl implements CustomerServices {
     public void delete(Customer id) {
         customerRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Customer id) {
+
+    }
 }

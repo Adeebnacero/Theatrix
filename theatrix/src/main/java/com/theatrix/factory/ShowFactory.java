@@ -8,11 +8,11 @@ import com.theatrix.utility.KeyGenerator;
  */
 public class ShowFactory {
 
-    public static Show buildShows(Long id, String showName, String startTime, String endTime, Long MovieId){
+    public static Show buildShows(Long id, String showDate, String startTime, String endTime, Long MovieId){
 
         Show shows = new Show.Builder()
                 .id(KeyGenerator.getEntityId())
-                .showNameVal(showName)
+                .showDate(showDate)
                 .startTimeVal(startTime)
                 .endTimeVal(endTime)
                 .movieVal(MovieId)

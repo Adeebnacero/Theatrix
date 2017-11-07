@@ -12,72 +12,75 @@ public class Seat implements Serializable
 {
 
     public Seat(Long id) {
-        this.seat_ID = id;
+        this.seat_Class_ID = id;
+    }
+
+    public Seat() {
     }
 
     @Id
     ///@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long seat_ID;
-    private String seatNumber;
-    private String seatStatus;
+    private Long seat_Class_ID;
+    private String seat_class_category;
+    private int seat_quantity;
 
     //***************************************Setters*******************************************
 
-    public void setId(Long id) {
-        this.seat_ID = id;
+    public void setSeat_Class_ID(Long seat_Class_ID) {
+        this.seat_Class_ID = seat_Class_ID;
     }
 
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
+    public void setSeat_class_category(String seat_class_category) {
+        this.seat_class_category = seat_class_category;
     }
 
-    public void setSeatStatus(String seatStatus) {
-        this.seatStatus = seatStatus;
+    public void setClass_no_seat(int seat_quantity) {
+        this.seat_quantity = seat_quantity;
     }
 
 
     //***************************************Getters*******************************************
 
 
-    public Long getId() {
-        return seat_ID;
+    public Long getSeat_Class_ID() {
+        return seat_Class_ID;
     }
 
-    public String getSeatNumber() {
-        return seatNumber;
+    public String getSeat_class_category() {
+        return seat_class_category;
     }
 
-    public String getSeatStatus() {
-        return seatStatus;
+    public int getClass_no_seat() {
+        return seat_quantity;
     }
-
 
     private Seat(Builder builder)
     {
-        this.seat_ID = builder.IDno;
-        this.seatNumber = builder.seatNumber;
-        this.seatStatus = builder.seatStatus;
+        this.seat_Class_ID = builder.seat_Class_ID;
+        this.seat_class_category = builder.seat_class_category;
+        this.seat_quantity = builder.seat_quantity;
 
     }
 
 
     public static class Builder {
 
-        Long IDno;
-        private String seatNumber, seatStatus;
+        private Long seat_Class_ID;
+        private String seat_class_category;
+        private int seat_quantity;
 
-        public Builder id(Long val) {
-            this.IDno = val;
+        public Builder seat_Class_ID(Long val) {
+            this.seat_Class_ID = val;
             return this;
         }
 
-        public Builder seatNumVal(String val) {
-            this.seatNumber = val;
+        public Builder seat_class_category(String val) {
+            this.seat_class_category = val;
             return this;
         }
 
-        public Builder seatStatusVal(String val) {
-            this.seatStatus = val;
+        public Builder seat_quantity(int val) {
+            this.seat_quantity = val;
             return this;
         }
 
@@ -88,6 +91,18 @@ public class Seat implements Serializable
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Seat)) return false;
 
+        Seat seat = (Seat) o;
 
+        return getSeat_Class_ID().equals(seat.getSeat_Class_ID());
+    }
+
+    @Override
+    public int hashCode() {
+        return getSeat_Class_ID().hashCode();
+    }
 }

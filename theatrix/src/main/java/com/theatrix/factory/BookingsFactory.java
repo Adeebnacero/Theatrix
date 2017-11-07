@@ -9,7 +9,7 @@ import com.theatrix.utility.KeyGenerator;
 public class BookingsFactory {
 
     public static Booking buildBookings(Long customerId, Long movieId, Long theatreId, Long showId
-    , Long seatId, String date, String numCustomers){
+    , Long seatId, String date, int noSeats){
 
         Booking booking = new Booking.Builder()
                 .id(KeyGenerator.getEntityId())
@@ -19,7 +19,7 @@ public class BookingsFactory {
                 .showIdVal(showId)
                 .seatIdVal(seatId)
                 .dateVal(date)
-                .numCustVal(numCustomers)
+                .numCustVal(noSeats)
                 .build();
 
         return booking;

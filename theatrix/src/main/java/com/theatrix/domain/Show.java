@@ -21,7 +21,7 @@ public class Show implements Serializable
     @Id
    /// @GeneratedValue(strategy = GenerationType.AUTO)
     private Long show_ID;
-    private String showName;
+    private String show_date;
     private String startTime;
     private String endTime;
     private Long movie_ID;
@@ -36,8 +36,8 @@ public class Show implements Serializable
         this.show_ID = show_ID;
     }
 
-    public void setShowName(String showName) {
-        this.showName = showName;
+    public void setShow_date(String show_date) {
+        this.show_date = show_date;
     }
 
     public void setStartTime(String startTime) {
@@ -60,8 +60,8 @@ public class Show implements Serializable
         return show_ID;
     }
 
-    public String getShowName() {
-        return showName;
+    public String getShow_date() {
+        return show_date;
     }
 
     public String getStartTime() {
@@ -80,7 +80,7 @@ public class Show implements Serializable
     private Show(Builder builder)
     {
         this.show_ID = builder.IDno;
-        this.showName = builder.showName;
+        this.show_date = builder.show_date;
         this.startTime = builder.startTime;
         this.endTime = builder.endTime;
         this.movie_ID = builder.MovieId;
@@ -91,15 +91,15 @@ public class Show implements Serializable
     public static class Builder {
 
         private Long IDno, MovieId;
-        private String showName, startTime, endTime;
+        private String show_date, startTime, endTime;
 
 
         public Builder id(Long val) {
             this.IDno = val;
             return this;
         }
-        public Builder showNameVal(String val) {
-            this.showName = val;
+        public Builder showDate(String val) {
+            this.show_date = val;
             return this;
         }
 
@@ -121,7 +121,20 @@ public class Show implements Serializable
         public Show build() {
             return new Show(this);
         }
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Show)) return false;
 
+        Show show = (Show) o;
+
+        return show_ID.equals(show.show_ID);
+    }
+
+    @Override
+    public int hashCode() {
+        return show_ID.hashCode();
     }
 }

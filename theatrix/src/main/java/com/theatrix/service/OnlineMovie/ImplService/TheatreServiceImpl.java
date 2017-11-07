@@ -35,4 +35,9 @@ public class TheatreServiceImpl implements TheatreServices {
     public void delete(Theatre id) {
         theatreRepository.delete(id);
     }
+
+    @Override
+    public void bookMovie(Theatre id) {
+
+    }
 }

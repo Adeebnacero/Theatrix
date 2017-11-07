@@ -1,5 +1,6 @@
 package com.theatrix.controller;
 
+import com.google.gson.Gson;
 import com.theatrix.domain.Theatre;
 import com.theatrix.service.OnlineMovie.ImplService.TheatreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class TheatreController
     private TheatreServiceImpl theatreService;
 
 
-    @GetMapping(path="/add")
+    @GetMapping(path="/add/{name}/{address}/{maxAdience}/{minAdience}")
     public @ResponseBody
     String addNewTheatre(@RequestParam String name, @RequestParam String address, @RequestParam String maxAdience,
                           @RequestParam String minAdience) {
@@ -34,17 +35,19 @@ public class TheatreController
                 .build();
 
         theatreService.save(theatre);
-        return "Saved";
+        return new Gson().toJson(theatre);
     }
 
-    @GetMapping(path="/readOne")
+    @GetMapping(path="/readOne/{id}")
     public @ResponseBody
-    Theatre readOneTheatre(@RequestParam Long id) {
+    String readOneTheatre(@RequestParam Long id) {
 
-        return theatreService.findById(id);
+        Theatre theatre = theatreService.findById(id);
+        return new Gson().toJson(theatre);
     }
 
-    @GetMapping(path="/update")
+
+    @GetMapping(path="/update/{id}/{name}/{address}/{maxAdience}/{minAdience}")
     public @ResponseBody
     String updateTheatre(@RequestParam long id, @RequestParam String name, @RequestParam String address,
                          @RequestParam String maxAdience, @RequestParam String minAdience) {
@@ -58,17 +61,17 @@ public class TheatreController
                 .build();
 
         theatreService.save(theatre);
-        return "Saved";
+        return new Gson().toJson(theatre);
     }
 
 
-    @GetMapping(path="/delete")
+    @GetMapping(path="/delete/{id}")
     public @ResponseBody String deleteTheatre (@RequestParam Long id) {
 
         Theatre theatre =  theatreService.findById(id);
         theatreService.delete(theatre);
 
-        return "deleted";
+        return new Gson().toJson(theatre);
     }
 
 

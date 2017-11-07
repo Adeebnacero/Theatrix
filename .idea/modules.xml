@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Theatrix.iml" filepath="$PROJECT_DIR$/.idea/Theatrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/theatrix/theatrix.iml" filepath="$PROJECT_DIR$/theatrix/theatrix.iml" />
     </modules>
   </component>
 </project>

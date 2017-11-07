@@ -1,8 +1,6 @@
 package com.theatrix.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -14,19 +12,19 @@ public class Seat implements Serializable
 {
 
     public Seat(Long id) {
-        this.id = id;
+        this.seat_ID = id;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    ///@GeneratedValue(strategy = GenerationType.AUTO)
+    private Long seat_ID;
     private String seatNumber;
     private String seatStatus;
 
     //***************************************Setters*******************************************
 
     public void setId(Long id) {
-        this.id = id;
+        this.seat_ID = id;
     }
 
     public void setSeatNumber(String seatNumber) {
@@ -42,7 +40,7 @@ public class Seat implements Serializable
 
 
     public Long getId() {
-        return id;
+        return seat_ID;
     }
 
     public String getSeatNumber() {
@@ -56,7 +54,7 @@ public class Seat implements Serializable
 
     private Seat(Builder builder)
     {
-        this.id = builder.IDno;
+        this.seat_ID = builder.IDno;
         this.seatNumber = builder.seatNumber;
         this.seatStatus = builder.seatStatus;
 

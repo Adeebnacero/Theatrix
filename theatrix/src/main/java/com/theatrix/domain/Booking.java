@@ -1,10 +1,9 @@
 package com.theatrix.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Kino on 2017-11-05.
@@ -18,16 +17,31 @@ public class Booking implements Serializable
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long customerId;
-    private Long movieId;
-    private Long theatreId;
-    private Long showId;
-    private Long seatId;
+    private Long customer_ID;
+    private Long movie_ID;
+    private Long theatre_ID;
+    private Long show_ID;
+    private Long seat_ID;
     private String date;
     private String numCustomers;
 
+    @Column(name ="customer_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Customer> customerList;
+    @Column(name ="movie_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Movie> movieSet;
+    @Column(name ="theatre_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Theatre> theatreSet;
+    @Column(name ="show_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Show> showSet;
+    @Column(name ="seat_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Seat> seatSet;
 
 //***************************************Setters*******************************************
 
@@ -37,23 +51,23 @@ public class Booking implements Serializable
     }
 
     public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+        this.customer_ID = customerId;
     }
 
     public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+        this.movie_ID = movieId;
     }
 
     public void setTheatreId(Long theatreId) {
-        this.theatreId = theatreId;
+        this.theatre_ID = theatreId;
     }
 
     public void setShowId(Long showId) {
-        this.showId = showId;
+        this.show_ID = showId;
     }
 
     public void setSeatId(Long seatId) {
-        this.seatId = seatId;
+        this.seat_ID = seatId;
     }
 
     public void setDate(String date) {
@@ -72,23 +86,23 @@ public class Booking implements Serializable
     }
 
     public Long getCustomerId() {
-        return customerId;
+        return customer_ID;
     }
 
     public Long getMovieId() {
-        return movieId;
+        return movie_ID;
     }
 
     public Long getTheatreId() {
-        return theatreId;
+        return theatre_ID;
     }
 
     public Long getShowId() {
-        return showId;
+        return show_ID;
     }
 
     public Long getSeatId() {
-        return seatId;
+        return seat_ID;
     }
 
     public String getDate() {
@@ -104,11 +118,11 @@ public class Booking implements Serializable
     private Booking(Builder builder)
     {
         this.id = builder.IDno;
-        this.customerId = builder.custId;
-        this.movieId = builder.movieId;
-        this.theatreId = builder.theatreId;
-        this.showId = builder.showId;
-        this.seatId = builder.seatId;
+        this.customer_ID = builder.custId;
+        this.movie_ID = builder.movieId;
+        this.theatre_ID = builder.theatreId;
+        this.show_ID = builder.showId;
+        this.seat_ID = builder.seatId;
         this.date = builder.date;
         this.numCustomers = builder.numCustomers;
 

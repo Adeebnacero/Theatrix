@@ -50,7 +50,7 @@ public class ShowController
                       @RequestParam String endTime, @RequestParam Long MovieId) {
 
         Show show = new Show.Builder()
-                .idVal(id)
+                .id(id)
                 .showNameVal(showName)
                 .startTimeVal(startTime)
                 .endTimeVal(endTime)

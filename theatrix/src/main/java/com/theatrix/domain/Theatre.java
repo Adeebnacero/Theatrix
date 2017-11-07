@@ -1,10 +1,8 @@
 package com.theatrix.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Kino on 2017-11-05.
@@ -13,22 +11,26 @@ import java.io.Serializable;
 public class Theatre implements Serializable
 {
     public Theatre(Long id) {
-        this.id = id;
+        this.theatre_ID = id;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private Long theatre_ID;
     private String name;
     private String address;
     private String maxAdience;
     private String minAdience;
-    private Long showId;
+    private Long show_ID;
+
+    @Column(name ="show_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Show> showSet;
 
     //***************************************Setters*******************************************
 
     public void setId(Long id) {
-        this.id = id;
+        this.theatre_ID = id;
     }
 
     public void setName(String name) {
@@ -47,8 +49,8 @@ public class Theatre implements Serializable
         this.minAdience = minAdience;
     }
 
-    public void setShowId(Long showId) {
-        this.showId = showId;
+    public void setShowId(Long show_ID) {
+        this.show_ID = show_ID;
     }
 
 
@@ -56,7 +58,7 @@ public class Theatre implements Serializable
 
 
     public Long getId() {
-        return id;
+        return theatre_ID;
     }
 
     public String getName() {
@@ -76,17 +78,17 @@ public class Theatre implements Serializable
     }
 
     public Long getShowId() {
-        return showId;
+        return show_ID;
     }
 
     private Theatre(Builder builder)
     {
-        this.id = builder.IDno;
+        this.theatre_ID = builder.IDno;
         this.name = builder.name;
         this.address = builder.address;
         this.maxAdience = builder.maxAdience;
         this.minAdience = builder.minAdience;
-        this.showId = builder.showId;
+        this.show_ID = builder.showId;
 
     }
 

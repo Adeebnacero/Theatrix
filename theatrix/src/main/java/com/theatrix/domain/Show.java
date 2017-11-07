@@ -1,10 +1,8 @@
 package com.theatrix.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by Kino on 2017-11-05.
@@ -14,22 +12,28 @@ public class Show implements Serializable
 {
 
     public Show(Long id) {
-        this.id = id;
+        this.show_ID = id;
+    }
+
+    public Show() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+   /// @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long show_ID;
     private String showName;
     private String startTime;
     private String endTime;
-    private Long MovieId;
+    private Long movie_ID;
 
+    @Column(name ="movie_ID", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Movie> movieSet;
 
     //***************************************Setters*******************************************
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long show_ID) {
+        this.show_ID = show_ID;
     }
 
     public void setShowName(String showName) {
@@ -45,7 +49,7 @@ public class Show implements Serializable
     }
 
     public void setMovieId(Long movieId) {
-        MovieId = movieId;
+        movie_ID = movieId;
     }
 
 
@@ -53,7 +57,7 @@ public class Show implements Serializable
 
 
     public Long getId() {
-        return id;
+        return show_ID;
     }
 
     public String getShowName() {
@@ -69,17 +73,17 @@ public class Show implements Serializable
     }
 
     public Long getMovieId() {
-        return MovieId;
+        return movie_ID;
     }
 
 
     private Show(Builder builder)
     {
-        this.id = builder.IDno;
+        this.show_ID = builder.IDno;
         this.showName = builder.showName;
         this.startTime = builder.startTime;
         this.endTime = builder.endTime;
-        this.MovieId = builder.MovieId;
+        this.movie_ID = builder.MovieId;
 
     }
 

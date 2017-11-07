@@ -1,8 +1,6 @@
 package com.theatrix.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -14,12 +12,12 @@ public class Customer implements Serializable
 {
 
     public Customer(Long id) {
-        this.id = id;
+        this.customer_ID = id;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private Long customer_ID;
     private String name;
     private String surname;
     private String cellphone;
@@ -31,7 +29,7 @@ public class Customer implements Serializable
 
 
     public void setId(Long id) {
-        this.id = id;
+        this.customer_ID = id;
     }
 
     public void setName(String name) {
@@ -62,7 +60,7 @@ public class Customer implements Serializable
 
 
     public Long getId() {
-        return id;
+        return customer_ID;
     }
 
     public String getName() {
@@ -93,7 +91,7 @@ public class Customer implements Serializable
 
     private Customer(Builder builder)
     {
-        this.id = builder.IDno;
+        this.customer_ID = builder.IDno;
         this.name = builder.name;
         this.surname = builder.surname;
         this.cellphone = builder.cellphone;

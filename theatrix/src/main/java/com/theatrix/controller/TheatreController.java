@@ -1,6 +1,5 @@
 package com.theatrix.controller;
 
-import com.theatrix.domain.Customer;
 import com.theatrix.domain.Theatre;
 import com.theatrix.service.OnlineMovie.ImplService.TheatreServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +49,7 @@ public class TheatreController
                          @RequestParam String maxAdience, @RequestParam String minAdience) {
 
         Theatre theatre = new Theatre.Builder()
-                .idVal(id)
+                .id(id)
                 .nameVal(name)
                 .addressVal(address)
                 .maxAdienceVal(maxAdience)

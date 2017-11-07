@@ -1,8 +1,6 @@
 package com.theatrix.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -14,12 +12,15 @@ public class Movie implements Serializable
 {
 
     public Movie(Long id) {
-        this.id = id;
+        this.movie_ID = id;
+    }
+
+    public Movie() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private Long movie_ID;
     private String name;
     private String category;
     private String duration;
@@ -31,7 +32,7 @@ public class Movie implements Serializable
 
 
     public void setId(Long id) {
-        this.id = id;
+        this.movie_ID = id;
     }
 
     public void setName(String name) {
@@ -58,7 +59,7 @@ public class Movie implements Serializable
 
 
     public Long getId() {
-        return id;
+        return movie_ID;
     }
 
     public String getName() {
@@ -84,7 +85,7 @@ public class Movie implements Serializable
 
     private Movie(Builder builder)
     {
-        this.id = builder.IDno;
+        this.movie_ID = builder.IDno;
         this.name = builder.name;
         this.category = builder.category;
         this.duration = builder.duration;
